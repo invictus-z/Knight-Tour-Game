@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>马踏棋盘</title>
+    <link rel="stylesheet" href="static/style.css">
+    <script src="static/script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>马踏棋盘</h1>
+            <p>规则：将马随机放在国际象棋棋盘的某个方格上，按照马走棋规则移动，每个方格只进入一次，走遍棋盘上全部方格。</p>
+        </header>
+        
+        <!-- 状态面板移到标题下方 -->
+        <div class="status-panel">
+            <div id="message" class="message">欢迎使用马踏棋盘！请生成棋盘开始游戏。</div>
+            <div class="info">
+                <span>当前步数: <span id="stepCount">0</span></span>
+                <span>总步数: <span id="totalSteps">64</span></span>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- 左侧控制面板 -->
+            <div class="left-panel">
+                <div class="control-panel">
+                    <div class="config-section">
+                        <div class="config-row">
+                            <label for="boardSize">棋盘大小:</label>
+                            <select id="boardSize">
+                                <option value="4"> 4 x 4</option>
+                                <option value="5"> 5 x 5</option>
+                                <option value="6"> 6 x 6</option>
+                                <option value="7"> 7 x 7</option>
+                                <option value="8" selected> 8 x 8</option>
+                                <option value="9"> 9 x 9</option>
+                                <option value="10">10 x 10</option>
+                            </select>
+                        </div>
+                        <div class="config-row">
+                            <button id="generateBoard">生成棋盘</button>
+                        </div>
+                        <div class="config-row">
+                            <button id="resetBoard">重置棋盘</button>
+                        </div>
+                        <div class="config-row">
+                            <button id="undoMove">悔棋</button>
+                        </div>
+                    </div>
+
+                    <div class="auto-section">
+                        <div class="auto-row">
+                            <button id="autoCheck">自动统计剩余解数</button>
+                        </div>
+                        <div class="auto-row">
+                            <button id="autoMove">自动走棋</button>
+                            
+                        </div>
+                        <div class="auto-row">
+                            <button id="pauseAutoMove">暂停自动走棋</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 中央棋盘 -->
+            <div class="chessboard-container">
+                <div id="chessboard" class="chessboard"></div>
+            </div>
+
+            <!-- 右侧保存面板 -->
+            <div class="right-panel">
+                <div class="save-section">
+                    <div class="save-row">
+                        <label for="save-loc">保存至……</label>
+                        <select id="save-loc">
+                            <option value="1"> 位置 1</option>
+                            <option value="2"> 位置 2</option>
+                            <option value="3"> 位置 3</option>
+                        </select>
+                        <button id="saveBtn">确认</button>
+                    </div>
+                    
+                    <div class="save-row">
+                        <label for="recall-loc">从……恢复</label>
+                        <select id="recall-loc">
+                            <option value="1">位置 1</option>
+                            <option value="2">位置 2</option>
+                            <option value="3">位置 3</option>
+                        </select>
+                        <button id="recallBtn">确认</button>
+                    </div>
+                    
+                    <div class="save-row">
+                        <button id="downloadBtn">下载残局至本地</button>
+                    </div>
+                    
+                    <div class="save-row">
+                        <input type="file" id="importFile" accept=".json" style="display: none;">
+                        <button id="importBtn">从本地上传残局</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

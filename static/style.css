@@ -1,0 +1,260 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header p {
+    color: #666;
+    font-size: 1.1em;
+}
+
+/* 状态面板 */
+.status-panel {
+    background: #e9ecef;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.message {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #495057;
+    margin-bottom: 10px;
+    min-height: 24px;
+}
+
+.info {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 1em;
+    color: #6c757d;
+}
+
+/* 主内容区域 */
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* 左侧面板 */
+.left-panel {
+    flex: 0 0 250px;
+}
+
+.control-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.config-section, .auto-section {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.config-row, .auto-row {
+    margin-bottom: 10px;
+}
+
+.config-row:last-child, .auto-row:last-child {
+    margin-bottom: 0;
+}
+
+/* 棋盘容器 */
+.chessboard-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+}
+
+.chessboard {
+    display: inline-grid;
+    gap: 1px;
+    background: #8b4513;
+    padding: 2px;
+    border: 3px solid #5d4037;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* 右侧面板 */
+.right-panel {
+    flex: 0 0 250px;
+}
+
+.save-section {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.save-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* 通用样式 */
+label {
+    font-weight: bold;
+    color: #495057;
+    margin-bottom: 5px;
+}
+
+select, button {
+    padding: 10px 15px;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+select {
+    background: white;
+    cursor: pointer;
+}
+
+button {
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+}
+
+button:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* 棋盘格子样式 */
+.cell {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.cell.light {
+    background: #f0d9b5;
+}
+
+.cell.dark {
+    background: #b58863;
+}
+
+.cell:hover {
+    transform: scale(1.05);
+    z-index: 1;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.cell.current {
+    background: #ffeb3b !important;
+    color: #000;
+    font-weight: bold;
+}
+
+.cell.visited {
+    background: #4caf50 !important;
+    color: white;
+}
+
+.cell.possible {
+    background: #2196f3 !important;
+    color: white;
+    cursor: pointer;
+}
+
+.cell.possible:hover {
+    background: #1976d2 !important;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .main-content {
+        flex-direction: column;
+    }
+    
+    .left-panel, .right-panel {
+        flex: 1;
+        width: 100%;
+    }
+    
+    .cell {
+        width: 35px;
+        height: 35px;
+        font-size: 12px;
+    }
+    
+    header h1 {
+        font-size: 2em;
+    }
+    
+    .save-row {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .save-row label {
+        margin-bottom: 0;
+        margin-right: 10px;
+    }
+}
